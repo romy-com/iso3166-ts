@@ -42,7 +42,7 @@ values. For example, `Country["alpha2"]` is a union of the supported alpha-2 cod
 Numeric codes are strings: use `"004"`, not `"4"` or a JavaScript number.
 Names are preserved from the source, including Unicode. Country names, aliases
 such as `"UK"`, unofficial codes, subdivisions, and historic codes are not lookup
-inputs. There is no currency integration or dependency on ISO 4217.
+inputs.
 
 ### Country selection
 
@@ -65,21 +65,32 @@ if (selected) {
 
 Use Node.js 24 LTS and npm. The built library supports both ESM and CommonJS and
 uses ES2022 features; the development tools require a recent Node.js version.
+Both JavaScript builds are minified, with source maps and TypeScript declarations
+included. The license banner is preserved.
 
 ```sh
 npm ci
+npm run lint
+npm run format:check
 npm test
 npm run typecheck
 npm run build
 npm run check
 ```
 
-`npm run check` runs formatting checks, tests, typechecking, both builds, and
-package-entry-point smoke tests. `npm run test:watch` watches the tests;
-`npm run format` formats hand-maintained files.
+`npm run check` runs Oxlint, Oxfmt checks, tests, typechecking, both builds, and
+package-entry-point smoke tests. CI runs the same command.
 
-The cloned `iso4217-ts/` directory is a local reference only and is excluded
-from this project's tests, typecheck, formatting, Git tracking, and package.
+- `npm run lint` checks hand-maintained code with Oxlint; warnings fail the check.
+- `npm run lint:fix` applies safe automatic lint fixes.
+- `npm run format` formats hand-maintained files with Oxfmt.
+- `npm run format:check` checks formatting without writing files.
+- `npm run test:watch` watches the tests.
+
+Lint and format settings live in `.oxlintrc.json` and `.oxfmtrc.json`. Generated
+`src/data.ts` is excluded from both; the XML snapshot and original data-license
+notice are also excluded from formatting. Typechecking remains a separate
+`tsc` step.
 
 ### Regenerate the data
 
@@ -108,6 +119,16 @@ CI also checks that regeneration leaves `src/data.ts` unchanged.
 
 All dependencies are development-only. The esbuild override selects a patched
 version rather than the vulnerable 0.27.x version requested by the build tooling.
+
+## Publishing to npm
+
+Publishing a GitHub release runs `.github/workflows/publish.yml`: install
+dependencies, typecheck, test, build, then `npm publish --access public`.
+
+Configure npm [trusted publishing](https://docs.npmjs.com/trusted-publishers/)
+for owner `romy-com`, repository `iso3166-ts`, and workflow `publish.yml`.
+Before the first release, confirm the npm package name and ownership, and remove
+`private: true` from `package.json`. The package is not publishable until then.
 
 ## Data provenance and licenses
 

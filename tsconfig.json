@@ -16,5 +16,5 @@
     "types": ["node"]
   },
   "include": ["src", "scripts", "tests", "*.config.ts"],
-  "exclude": ["node_modules", "dist", "iso4217-ts", "tests/package-types"]
+  "exclude": ["node_modules", "dist", "tests/package-types"]
 }
