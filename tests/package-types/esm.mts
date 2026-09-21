@@ -1,5 +1,5 @@
-import { countries, country } from "iso3166-ts";
-import type { Country } from "iso3166-ts";
+import { countries, country } from "@romy-com/iso3166-ts";
+import type { Country } from "@romy-com/iso3166-ts";
 
 const records: readonly Country[] = countries;
 const result: Country | undefined = country("IT");
