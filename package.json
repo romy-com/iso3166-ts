@@ -2,6 +2,10 @@
   "name": "iso3166-ts",
   "version": "0.1.0",
   "private": true,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "description": "ISO 3166-1 countries and country-code lookup for TypeScript",
   "type": "module",
   "main": "dist/index.cjs",
