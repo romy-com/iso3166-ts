@@ -166,11 +166,16 @@ without leading zeros. For example, `2026.9.0` is the first September 2026
 release; subsequent releases that month are `2026.9.1`, `2026.9.2`, and so on.
 The first release in October becomes `2026.10.0`.
 
-For subsequent releases, set the version explicitly with `npm version <version>`,
-push the resulting commit and tag, and publish a GitHub release for that tag.
-The workflow installs dependencies, typechecks, tests, builds, and runs
-`npm publish --access public`. It does not calculate or change the version.
-Each npm publication requires a new version.
+For subsequent releases, publish a GitHub release with a new tag such as
+`v2026.9.2`, targeting `main`. The release tag determines the npm version.
+
+The workflow installs dependencies, sets the version in `package.json` and
+`package-lock.json` from the tag, typechecks, tests, builds, and publishes.
+The version change happens only in the release runner; it does not create a
+commit or tag. A separate version-bump PR is not required.
+
+Each npm publication requires a new version. The release tag must point to a
+commit containing the publishing workflow you want to run.
 
 ## Data provenance and licenses
 
