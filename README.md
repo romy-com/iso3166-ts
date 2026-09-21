@@ -135,9 +135,16 @@ After the first publish, configure npm
 [trusted publishing](https://docs.npmjs.com/trusted-publishers/) for owner
 `romy-com`, repository `iso3166-ts`, and workflow `publish.yml`.
 
-For subsequent versions, bump the package version and publish a GitHub release.
+Versions use month-based CalVer: `YEAR.MONTH.PATCH`, using the UTC release month
+without leading zeros. For example, `2026.9.0` is the first September 2026
+release; subsequent releases that month are `2026.9.1`, `2026.9.2`, and so on.
+The first release in October becomes `2026.10.0`.
+
+For subsequent releases, set the version explicitly with `npm version <version>`,
+push the resulting commit and tag, and publish a GitHub release for that tag.
 The workflow installs dependencies, typechecks, tests, builds, and runs
-`npm publish --access public`. Each npm publication requires a new version.
+`npm publish --access public`. It does not calculate or change the version.
+Each npm publication requires a new version.
 
 ## Data provenance and licenses
 
