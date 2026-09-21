@@ -3,13 +3,7 @@
   "categories": {
     "correctness": "error"
   },
-  "ignorePatterns": [
-    "/node_modules/",
-    "/dist/",
-    "/coverage/",
-    "/iso4217-ts/",
-    "/src/data.ts"
-  ],
+  "ignorePatterns": ["/node_modules/", "/dist/", "/coverage/", "/src/data.ts"],
   "overrides": [
     {
       "files": ["tests/package-types/*"],

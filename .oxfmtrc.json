@@ -6,7 +6,6 @@
     "/node_modules/",
     "/dist/",
     "/coverage/",
-    "/iso4217-ts/",
     "/src/data.ts",
     "/data/iso-3166.xml",
     "/data/LICENSE.md",

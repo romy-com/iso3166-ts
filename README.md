@@ -42,7 +42,7 @@ values. For example, `Country["alpha2"]` is a union of the supported alpha-2 cod
 Numeric codes are strings: use `"004"`, not `"4"` or a JavaScript number.
 Names are preserved from the source, including Unicode. Country names, aliases
 such as `"UK"`, unofficial codes, subdivisions, and historic codes are not lookup
-inputs. There is no currency integration or dependency on ISO 4217.
+inputs.
 
 ### Country selection
 
@@ -89,10 +89,6 @@ Lint and format settings live in `.oxlintrc.json` and `.oxfmtrc.json`. Generated
 `src/data.ts` is excluded from both; the XML snapshot and original data-license
 notice are also excluded from formatting. Typechecking remains a separate
 `tsc` step.
-
-The cloned `iso4217-ts/` directory is a local reference only and is excluded
-from this project's linting, formatting, tests, typecheck, Git tracking, and
-package.
 
 ### Regenerate the data
 

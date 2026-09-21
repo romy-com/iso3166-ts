@@ -46,8 +46,8 @@ The original notice is preserved in [LICENSE.md](LICENSE.md).
 
 Retain attribution, the source and license links, and a description of any
 changes when distributing this data. Adapted datasets must comply with the
-license's ShareAlike terms. Do not describe this dataset as MIT-licensed based
-on the license of a reference library or of this project's code.
+license's ShareAlike terms. This project's MIT code license does not apply to
+the dataset.
 
 This snapshot is unchanged. The generated four-field dataset is a mapped subset,
 as described in [NOTICE.md](../NOTICE.md). The data attribution and license notice
