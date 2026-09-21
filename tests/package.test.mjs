@@ -4,8 +4,8 @@ import { test } from "node:test";
 
 const require = createRequire(import.meta.url);
 const modules = [
-  ["ESM", await import("iso3166-ts")],
-  ["CommonJS", require("iso3166-ts")],
+  ["ESM", await import("@romy-com/iso3166-ts")],
+  ["CommonJS", require("@romy-com/iso3166-ts")],
 ];
 
 for (const [format, api] of modules) {

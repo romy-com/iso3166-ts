@@ -1,5 +1,5 @@
-import iso3166 = require("iso3166-ts");
-import type { Country } from "iso3166-ts";
+import iso3166 = require("@romy-com/iso3166-ts");
+import type { Country } from "@romy-com/iso3166-ts";
 
 const records: readonly Country[] = iso3166.countries;
 const result: Country | undefined = iso3166.country("ITA");

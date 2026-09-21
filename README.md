@@ -1,17 +1,15 @@
-# iso3166-ts
+# @romy-com/iso3166-ts
 
 ISO 3166-1 countries and territories for TypeScript. Zero runtime dependencies;
 no XML parsing or network access at runtime.
 
 Repository: [romy-com/iso3166-ts](https://github.com/romy-com/iso3166-ts).
-The local package name is currently `iso3166-ts`; publishing is disabled with
-`private: true` until the npm name and release setup are confirmed.
 
 ## API
 
 ```ts
-import { countries, country } from "iso3166-ts";
-import type { Country } from "iso3166-ts";
+import { countries, country } from "@romy-com/iso3166-ts";
+import type { Country } from "@romy-com/iso3166-ts";
 
 country("IT");
 // { alpha2: "IT", alpha3: "ITA", name: "Italy", numeric: "380" }
@@ -122,13 +120,24 @@ version rather than the vulnerable 0.27.x version requested by the build tooling
 
 ## Publishing to npm
 
-Publishing a GitHub release runs `.github/workflows/publish.yml`: install
-dependencies, typecheck, test, build, then `npm publish --access public`.
+The first successful publish creates `@romy-com/iso3166-ts` on npm. There is no
+separate website creation step. From this directory, authenticate with an npm
+account authorized to publish packages in the `romy-com` npm organization:
 
-Configure npm [trusted publishing](https://docs.npmjs.com/trusted-publishers/)
-for owner `romy-com`, repository `iso3166-ts`, and workflow `publish.yml`.
-Before the first release, confirm the npm package name and ownership, and remove
-`private: true` from `package.json`. The package is not publishable until then.
+```sh
+npm login --auth-type=web
+npm publish --access public
+```
+
+The `prepack` hook runs all checks before publishing.
+
+After the first publish, configure npm
+[trusted publishing](https://docs.npmjs.com/trusted-publishers/) for owner
+`romy-com`, repository `iso3166-ts`, and workflow `publish.yml`.
+
+For subsequent versions, bump the package version and publish a GitHub release.
+The workflow installs dependencies, typechecks, tests, builds, and runs
+`npm publish --access public`. Each npm publication requires a new version.
 
 ## Data provenance and licenses
 
