@@ -68,18 +68,31 @@ uses ES2022 features; the development tools require a recent Node.js version.
 
 ```sh
 npm ci
+npm run lint
+npm run format:check
 npm test
 npm run typecheck
 npm run build
 npm run check
 ```
 
-`npm run check` runs formatting checks, tests, typechecking, both builds, and
-package-entry-point smoke tests. `npm run test:watch` watches the tests;
-`npm run format` formats hand-maintained files.
+`npm run check` runs Oxlint, Oxfmt checks, tests, typechecking, both builds, and
+package-entry-point smoke tests. CI runs the same command.
+
+- `npm run lint` checks hand-maintained code with Oxlint; warnings fail the check.
+- `npm run lint:fix` applies safe automatic lint fixes.
+- `npm run format` formats hand-maintained files with Oxfmt.
+- `npm run format:check` checks formatting without writing files.
+- `npm run test:watch` watches the tests.
+
+Lint and format settings live in `.oxlintrc.json` and `.oxfmtrc.json`. Generated
+`src/data.ts` is excluded from both; the XML snapshot and original data-license
+notice are also excluded from formatting. Typechecking remains a separate
+`tsc` step.
 
 The cloned `iso4217-ts/` directory is a local reference only and is excluded
-from this project's tests, typecheck, formatting, Git tracking, and package.
+from this project's linting, formatting, tests, typecheck, Git tracking, and
+package.
 
 ### Regenerate the data
 

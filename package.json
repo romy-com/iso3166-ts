@@ -38,10 +38,12 @@
     "test:watch": "vitest",
     "test:package": "node --test tests/package.test.mjs && tsc -p tests/package-types/tsconfig.json",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "lint": "oxlint --deny-warnings .",
+    "lint:fix": "oxlint --fix --deny-warnings .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
     "iso:ingest-xml": "tsx scripts/ingest-iso-3166-xml.ts",
-    "check": "npm run format:check && npm test && npm run typecheck && npm run build && npm run test:package",
+    "check": "npm run lint && npm run format:check && npm test && npm run typecheck && npm run build && npm run test:package",
     "prepack": "npm run check"
   },
   "overrides": {
@@ -50,7 +52,8 @@
   "devDependencies": {
     "@types/node": "^22.20.4",
     "fast-xml-parser": "^5.11.1",
-    "prettier": "^3.9.8",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0",
     "tsup": "^8.5.1",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",

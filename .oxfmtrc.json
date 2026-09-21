@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 80,
+  "sortPackageJson": false,
+  "ignorePatterns": [
+    "/node_modules/",
+    "/dist/",
+    "/coverage/",
+    "/iso4217-ts/",
+    "/src/data.ts",
+    "/data/iso-3166.xml",
+    "/data/LICENSE.md",
+    "/package-lock.json"
+  ]
+}
