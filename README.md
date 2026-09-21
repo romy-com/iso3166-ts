@@ -5,6 +5,12 @@ no XML parsing or network access at runtime.
 
 Repository: [romy-com/iso3166-ts](https://github.com/romy-com/iso3166-ts).
 
+## Installation
+
+```sh
+npm install @romy-com/iso3166-ts
+```
+
 ## API
 
 ```ts
