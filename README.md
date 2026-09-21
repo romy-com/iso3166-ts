@@ -1,5 +1,7 @@
 # @romy-com/iso3166-ts
 
+> Sponsored by [tryromy.com](https://tryromy.com): The AI front desk agent for clinics
+
 ISO 3166-1 countries and territories for TypeScript. Zero runtime dependencies;
 no XML parsing or network access at runtime.
 
