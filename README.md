@@ -122,41 +122,13 @@ version rather than the vulnerable 0.27.x version requested by the build tooling
 
 ## Publishing to npm
 
-`.github/workflows/publish.yml` publishes stable GitHub releases to npm using
-[trusted publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC), without a
-stored npm token. It requires a release tag matching `v<package.json version>`,
-verifies the generated data, and runs all checks before publishing with
-provenance. Prereleases are not published by this workflow.
+Publishing a GitHub release runs `.github/workflows/publish.yml`: install
+dependencies, typecheck, test, build, then `npm publish --access public`.
 
-**Publishing is not enabled yet:** `private: true` remains in `package.json`,
-and the npm package name and trusted publisher still need confirmation/setup.
-Creating a GitHub release while the package is private fails the release guard.
-
-### One-time setup
-
-1. Confirm the npm name (`iso3166-ts` is currently provisional). If changing it,
-   update the manifest, lockfile, imports, and package smoke/type tests together.
-2. Remove `private: true` once the name and npm ownership are confirmed.
-3. For a new npm package, perform the initial publish from an authenticated
-   maintainer account using `npm publish --access public`. This creates the
-   package so its trusted publisher can be configured. The `prepack` hook runs
-   the checks before a local publish.
-4. In the npm package's **Trusted publishing** settings, configure GitHub Actions:
-   owner `romy-com`, repository `iso3166-ts`, workflow filename `publish.yml`.
-   Leave the environment field empty; this workflow does not use a GitHub
-   deployment environment.
-5. Merge the publishing workflow before creating subsequent releases. Do not
-   reuse the version already published during the initial setup.
-
-### Subsequent releases
-
-Bump the version with `npm version patch` (or `minor`/`major`), push the version
-commit and its tag, then publish a GitHub release for that tag. For example,
-package version `0.1.1` requires release tag `v0.1.1`.
-
-The workflow runs on GitHub-hosted Ubuntu with Node.js 24 and npm 11. It publishes
-only after all checks pass and skips publish lifecycle scripts because the
-artifacts were already built and verified. Merging a PR alone does not publish.
+Configure npm [trusted publishing](https://docs.npmjs.com/trusted-publishers/)
+for owner `romy-com`, repository `iso3166-ts`, and workflow `publish.yml`.
+Before the first release, confirm the npm package name and ownership, and remove
+`private: true` from `package.json`. The package is not publishable until then.
 
 ## Data provenance and licenses
 
