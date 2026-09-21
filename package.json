@@ -1,0 +1,59 @@
+{
+  "name": "iso3166-ts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ISO 3166-1 countries and country-code lookup for TypeScript",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "data/LICENSE.md",
+    "data/README.md",
+    "NOTICE.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romy-com/iso3166-ts.git"
+  },
+  "homepage": "https://github.com/romy-com/iso3166-ts",
+  "license": "MIT AND CC-BY-SA-4.0",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:package": "node --test tests/package.test.mjs && tsc -p tests/package-types/tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "iso:ingest-xml": "tsx scripts/ingest-iso-3166-xml.ts",
+    "check": "npm run format:check && npm test && npm run typecheck && npm run build && npm run test:package",
+    "prepack": "npm run check"
+  },
+  "overrides": {
+    "esbuild": "^0.28.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "fast-xml-parser": "^5.11.1",
+    "prettier": "^3.9.8",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+*.tgz
+.DS_Store
+
+# Local reference clone; not part of this independent package.
+/iso4217-ts/
